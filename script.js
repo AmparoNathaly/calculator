@@ -25,7 +25,7 @@ document.querySelectorAll('.number').forEach(button => {
 document.querySelectorAll('.operator').forEach(element => {
     element.addEventListener('click', (event) => {
         const selectedOperator = event.target.getAttribute('data-value');
-        /* Manejo de tecla = */
+        /* Manejo de tecla '=' */
         if (selectedOperator === '=') {
             if (currentNumber === '' || previousNumber === '') return;
 
@@ -35,7 +35,7 @@ document.querySelectorAll('.operator').forEach(element => {
             currentNumber = result.toString();
             operator = '';
         } 
-        /* Manejo de tecla +/- */
+        /* Manejo de tecla '+/-' */
         else if (selectedOperator === '+/-') {
             let screenElement = document.querySelector('.screen');
             let screenValue = parseFloat(screenElement.innerText);
@@ -48,7 +48,18 @@ document.querySelectorAll('.operator').forEach(element => {
                 return;
             }
         } 
-        /* Manejo de % */
+        /* MAnejo de tecla '√' */
+        else if (selectedOperator === '√' ) {
+            if (currentNumber !== '' ) {
+                let raiz = parseFloat(currentNumber);
+                result = Math.sqrt(raiz);
+                document.querySelector('.screen').innerText = result;
+                previousNumber = '';
+                currentNumber = result.toString();
+                operator = '';
+            }
+        }
+        /* Manejo de '%' */
         else if (selectedOperator === '%') {
             if (previousNumber !== '' && operator !== '') {
                 let percentage = parseFloat(currentNumber) / 100;
