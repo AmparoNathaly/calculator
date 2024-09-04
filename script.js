@@ -125,7 +125,6 @@ document.querySelectorAll('.light').forEach(light => {
         } else {
             result = '';
             document.querySelector('.screen').innerText = result;
-
         }
     });
 });
